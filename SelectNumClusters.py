@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
-__author__ = 'RicardoMoya'
-
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+
+# -*- coding: utf-8 -*-
+__author__ = 'RicardoMoya'
 
 # Constant
 DATASET1 = "./dataSet/DS_3Clusters_999Points.txt"
@@ -17,18 +17,19 @@ CONVERGENCE_TOLERANCE = 0.001
 NUM_THREADS = 8
 
 
-def dataSet2ListPoints(dirDataSet):
-    '''
+def dataset_to_list_points(dir_dataset):
+    """
     Read a txt file with a set of points and return a list of objects Point
-    '''
+    :param dir_dataset:
+    """
     points = list()
-    with open(dirDataSet, 'rt') as reader:
+    with open(dir_dataset, 'rt') as reader:
         for point in reader:
             points.append(np.asarray(map(float, point.split("::"))))
     return points
 
 
-def plotResults(inertials):
+def plot_results(inertials):
     x, y = zip(*[inertia for inertia in inertials])
     plt.plot(x, y, 'ro-', markersize=8, lw=2)
     plt.grid(True)
@@ -37,30 +38,27 @@ def plotResults(inertials):
     plt.show()
 
 
-
-def SelectClusters(dataSet, loops, maxIterations, initCluster, tolerance,
-                   numThreads):
+def select_clusters(dataset, loops, max_iterations, init_cluster, tolerance,
+                    num_threads):
     # Read data set
-    points = dataSet2ListPoints(dataSet)
+    points = dataset_to_list_points(dataset)
 
-    inertiaClusters = list()
+    inertia_lusters = list()
 
     for i in range(1, loops + 1, 1):
         # Object KMeans
-        kmeans = KMeans(n_clusters=i, max_iter=maxIterations,
-                        init=initCluster, tol=tolerance, n_jobs=numThreads)
+        kmeans = KMeans(n_clusters=i, max_iter=max_iterations,
+                        init=init_cluster, tol=tolerance, n_jobs=num_threads)
 
         # Calculate Kmeans
         kmeans.fit(points)
 
         # Obtain inertia
-        inertiaClusters.append([i, kmeans.inertia_])
+        inertia_lusters.append([i, kmeans.inertia_])
 
-    plotResults(inertiaClusters)
-
-
+    plot_results(inertia_lusters)
 
 
 if __name__ == '__main__':
-    SelectClusters(DATASET1, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
-                   CONVERGENCE_TOLERANCE, NUM_THREADS)
+    select_clusters(DATASET1, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
+                    CONVERGENCE_TOLERANCE, NUM_THREADS)
