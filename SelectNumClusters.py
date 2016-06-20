@@ -1,9 +1,9 @@
+# -*- coding: utf-8 -*-
+__author__ = 'RicardoMoya'
+
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-
-# -*- coding: utf-8 -*-
-__author__ = 'RicardoMoya'
 
 # Constant
 DATASET1 = "./dataSet/DS_3Clusters_999Points.txt"
