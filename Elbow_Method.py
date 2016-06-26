@@ -60,5 +60,5 @@ def select_clusters(dataset, loops, max_iterations, init_cluster, tolerance,
 
 
 if __name__ == '__main__':
-    select_clusters(DATASET1, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
+    select_clusters(DATASET2, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
                     CONVERGENCE_TOLERANCE, NUM_THREADS)
