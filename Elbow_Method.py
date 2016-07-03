@@ -9,7 +9,6 @@ from sklearn.cluster import KMeans
 DATASET1 = "./dataSet/DS_3Clusters_999Points.txt"
 DATASET2 = "./dataSet/DS2_3Clusters_999Points.txt"
 DATASET3 = "./dataSet/DS_5Clusters_10000Points.txt"
-DATASET4 = "./dataSet/DS_7Clusters_100000Points.txt"
 LOOPS = 20
 MAX_ITERATIONS = 10
 INITIALIZE_CLUSTERS = 'k-means++'
@@ -60,5 +59,5 @@ def select_clusters(dataset, loops, max_iterations, init_cluster, tolerance,
 
 
 if __name__ == '__main__':
-    select_clusters(DATASET2, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
+    select_clusters(DATASET1, LOOPS, MAX_ITERATIONS, INITIALIZE_CLUSTERS,
                     CONVERGENCE_TOLERANCE, NUM_THREADS)

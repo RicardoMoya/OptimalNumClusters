@@ -3,7 +3,7 @@ __author__ = 'RicardoMoya'
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
+from scipy.cluster.hierarchy import linkage
 
 # Constant
 DATASET1 = "./dataSet/DS_3Clusters_999Points.txt"
@@ -29,20 +29,13 @@ def plot_dendogram(dataset):
     # Calculate distances between points or groups of points
     Z = linkage(points, metric='euclidean', method='ward')
 
-    plt.title('Dendrogram')
-    plt.xlabel('Points')
-    plt.ylabel('Euclidean Distance')
+    # Obtain the last 10 distances between points
+    last = Z[-10:, 2]
+    num_clustres = np.arange(1, len(last) + 1)
 
-    # Generate Dendogram
-    dendrogram(
-        Z,
-        truncate_mode='lastp',
-        p=12,
-        leaf_rotation=90.,
-        leaf_font_size=12.,
-        show_contracted=True
-    )
-
+    # Calculate Gap
+    gap = np.diff(last, n=2)  # second derivative
+    plt.plot(num_clustres[:-2] + 1, gap[::-1], 'ro-', markersize=8, lw=2)
     plt.show()
 
 
