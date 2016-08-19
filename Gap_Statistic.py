@@ -23,7 +23,7 @@ def dataset_to_list_points(dir_dataset):
     return points
 
 
-def plot_dendogram(dataset):
+def plot_gap(dataset):
     points = dataset_to_list_points(dataset)
 
     # Calculate distances between points or groups of points
@@ -40,4 +40,4 @@ def plot_dendogram(dataset):
 
 
 if __name__ == '__main__':
-    plot_dendogram(DATASET1)
+    plot_gap(DATASET1)

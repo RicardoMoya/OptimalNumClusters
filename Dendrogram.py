@@ -23,7 +23,7 @@ def dataset_to_list_points(dir_dataset):
     return points
 
 
-def plot_dendogram(dataset):
+def plot_dendrogram(dataset):
     points = dataset_to_list_points(dataset)
 
     # Calculate distances between points or groups of points
@@ -33,7 +33,7 @@ def plot_dendogram(dataset):
     plt.xlabel('Points')
     plt.ylabel('Euclidean Distance')
 
-    # Generate Dendogram
+    # Generate Dendrogram
     dendrogram(
         Z,
         truncate_mode='lastp',
