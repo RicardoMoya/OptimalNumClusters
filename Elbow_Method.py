@@ -42,7 +42,7 @@ def select_clusters(dataset, loops, max_iterations, init_cluster, tolerance,
     # Read data set
     points = dataset_to_list_points(dataset)
 
-    inertia_lusters = list()
+    inertia_clusters = list()
 
     for i in range(1, loops + 1, 1):
         # Object KMeans
@@ -53,9 +53,9 @@ def select_clusters(dataset, loops, max_iterations, init_cluster, tolerance,
         kmeans.fit(points)
 
         # Obtain inertia
-        inertia_lusters.append([i, kmeans.inertia_])
+        inertia_clusters.append([i, kmeans.inertia_])
 
-    plot_results(inertia_lusters)
+    plot_results(inertia_clusters)
 
 
 if __name__ == '__main__':
